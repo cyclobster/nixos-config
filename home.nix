@@ -7,7 +7,15 @@
  
  programs.home-manager.enable = true;
 
- programs.zsh.enable = true;
+ programs.zsh = {
+  enable = true;
+  autosuggestion.enable = true;
+  syntaxHighlighting.enable = true;
+ };
 
  programs.kitty.enable = true;
+
+ home.sessionVariables = {
+  SHELL = "${pkgs.zsh}/bin/sh";
+ };
 }
