@@ -28,11 +28,13 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
+   console = {
+    font = "ter-v32b";
+    packages = [ pkgs.terminus_font ];
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+   };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
@@ -59,6 +61,8 @@
   # services.libinput.enable = true;
 
   programs.zsh.enable = true;
+  programs.hyprland.enable = true;
+  hardware.graphics.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.roger = {

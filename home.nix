@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
  home.username = "roger";
@@ -14,6 +14,19 @@
  };
 
  programs.kitty.enable = true;
+
+ wayland.windowManager.hyprland = {
+  enable = true;
+  package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  settings = {
+   "$terminal" = "kitty";
+   "$mod" = "SUPER";
+   bind = [
+    "$mod, Return, exec, $terminal"
+    "$mod, Q, killactive"
+   ];
+  };
+ };
 
  home.sessionVariables = {
   SHELL = "${pkgs.zsh}/bin/sh";
