@@ -15,6 +15,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.kernelModules = [ "i915" ]; # Fixes login loop by loading graphics card early
+  boot.kernelParams = [ "i915.enable_guc=0" ];
+
    networking.hostName = "carbon"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
@@ -37,6 +40,7 @@
   #   useXkbConfig = true; # use xkb.options in tty.
    };
 
+  services.xserver.videoDrivers = [ "modesetting" ];
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
@@ -68,7 +72,13 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+   enable = true;
+   extraPackages = with pkgs; [
+    intel-media-driver
+    # intel-vaapi-gl
+   ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.roger = {
@@ -77,7 +87,7 @@
      shell = pkgs.zsh;
    };
 
-  # programs.firefox.enable = true;
+   programs.firefox.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -101,6 +111,8 @@
   # };
 
   # List services that you want to enable:
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

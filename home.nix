@@ -13,7 +13,14 @@
   syntaxHighlighting.enable = true;
  };
 
- programs.kitty.enable = true;
+ programs.kitty = {
+  enable = true;
+  settings = {
+   shell = "zsh";
+  };
+ };
+ 
+ programs.firefox.enable = true;
 
  wayland.windowManager.hyprland = {
   enable = true;
@@ -22,7 +29,7 @@
 
   settings = {
    "$terminal" = "kitty";
-   "$mod" = "SUPER";
+   "$mod" = "MOD4";
 
    monitor = ",preferred,auto,1";
    
@@ -36,20 +43,19 @@
    };
 
    bind = [
-    "mod, Q, exec, kitty"
-    "mod, C, killactive,"
-    "mod, M, exit,"
-    "mod, E, exec, dolphin"
-    "mod, V, exec, togglefloating"
-    "mod, R, exec, wofi -- show drun"
-    "mod, P, pseudo," # dwindle
-    "mod, J, togglesplit," # dwindle
+    "$mod, Q, exec, kitty"
+    "$mod, C, killactive"
+    "$mod, M, exit"
+    "$mod, E, exec, dolphin"
+    "$mod, V, exec, togglefloating"
+    "$mod, R, exec, wofi -- show drun"
+    "$mod, F, exec, firefox"
 
      # move focus with mod + arrow keys
-     "mod, left, movefocus, l"
-     "mod, right, movefocus, r"
-     "mod, up, movefocus, u"
-     "mod, down, movefocus, d"
+     "$mod, left, movefocus, l"
+     "$mod, right, movefocus, r"
+     "$mod, up, movefocus, u"
+     "$mod, down, movefocus, d"
    ];
  
    env = [
