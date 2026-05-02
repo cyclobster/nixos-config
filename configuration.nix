@@ -81,6 +81,7 @@
      git
      openssh
      gh
+     uwsm
      firefox
    ];
 
