@@ -21,10 +21,23 @@
   settings = {
    "$terminal" = "kitty";
    "$mod" = "SUPER";
+
+   monitor = ",preferred,auto,1";
+
+   exec-once = [ "kitty" ];
+
    bind = [
     "$mod, Return, exec, $terminal"
     "$mod, Q, killactive"
+    "mod SHIFT, E, exit"
    ];
+
+   input = {
+    kb_layout = "us";
+    touchpad = {
+      natural_scroll = true;
+    };
+   };
   };
  };
 
