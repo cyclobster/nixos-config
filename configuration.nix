@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,7 +33,7 @@
     font = "ter-v32b";
     packages = [ pkgs.terminus_font ];
   #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
+     keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
    };
 
@@ -61,7 +62,12 @@
   # services.libinput.enable = true;
 
   programs.zsh.enable = true;
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # optional: ensure binary matches your flake version
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
   hardware.graphics.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -79,6 +85,7 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
+     terminus_font
      openssh
      gh
      uwsm

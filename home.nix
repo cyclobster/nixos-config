@@ -17,27 +17,48 @@
 
  wayland.windowManager.hyprland = {
   enable = true;
-  package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  package = null;
+  portalPackage = null;
+
   settings = {
    "$terminal" = "kitty";
    "$mod" = "SUPER";
 
    monitor = ",preferred,auto,1";
-
-   exec-once = [ "kitty" ];
+   
+   general = {
+    gaps_in = 5;
+    gaps_out = 20;
+    border_size = 2;
+    "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+    "col.inactive_border" = "rgba(595959aa)";
+    layout = "dwindle";
+   };
 
    bind = [
-    "$mod, Return, exec, $terminal"
-    "$mod, Q, killactive"
-    "mod SHIFT, E, exit"
-   ];
+    "mod, Q, exec, kitty"
+    "mod, C, killactive,"
+    "mod, M, exit,"
+    "mod, E, exec, dolphin"
+    "mod, V, exec, togglefloating"
+    "mod, R, exec, wofi -- show drun"
+    "mod, P, pseudo," # dwindle
+    "mod, J, togglesplit," # dwindle
 
-   input = {
-    kb_layout = "us";
-    touchpad = {
-      natural_scroll = true;
-    };
-   };
+     # move focus with mod + arrow keys
+     "mod, left, movefocus, l"
+     "mod, right, movefocus, r"
+     "mod, up, movefocus, u"
+     "mod, down, movefocus, d"
+   ];
+ 
+   env = [
+    "NIXOS_OZONE_WL,1"
+    "XDG_CURRENT_DESKTOP,Hyprland"
+    "XDG_SESSION_TYPE,wayland"
+    "XDG_SESSION_DESKTOP,Hyprland"
+    "QT_QPA_PLATFORM,wayland"
+   ];
   };
  };
 
