@@ -11,6 +11,9 @@
   enable = true;
   autosuggestion.enable = true;
   syntaxHighlighting.enable = true;
+  initContent = ''
+    setfont ter-v32b 2>/dev/null || true
+  '';
  };
 
  programs.kitty.enable = true;

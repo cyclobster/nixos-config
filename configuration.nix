@@ -20,7 +20,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  # time.timeZone = "America/New_York";
+   time.timeZone = "America/New_York";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -32,7 +32,7 @@
   #   font = "Lat2-Terminus16";
     font = "ter-v24b";
     packages = [ pkgs.terminus_font ];
-  #   keyMap = "us";
+    keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
    };
 
@@ -81,7 +81,6 @@
      git
      openssh
      gh
-     firefox
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
