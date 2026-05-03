@@ -4,7 +4,7 @@
  home.username = "roger";
  home.homeDirectory = "/home/roger";
  home.stateVersion = "25.11";
- 
+
  programs.home-manager.enable = true;
 
  programs.zsh = {
@@ -43,6 +43,13 @@ programs.wofi.enable = true;
  programs.firefox = {
   enable = true;
   configPath = "${config.xdg.configHome}/mozilla/firefox";
+  profiles.roger = {
+   extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+    tridactyl
+    lastpass-password-manager
+   ];
+   extensions.force = true;
+  };
  };
 
  wayland.windowManager.hyprland = {

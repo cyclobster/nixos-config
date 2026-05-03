@@ -14,6 +14,10 @@
    url = "github:nix-community/nixvim";
    inputs.nixpkgs.follows = "nixpkgs";
   };
+  nur = {
+   url = "github:nix-community/NUR";
+   inputs.nixpkgs.follows = "nixpkgs";
+  };
  };
 
  outputs = {
@@ -22,12 +26,14 @@
   home-manager,
   hyprland,
   nixvim,
+  nur,
   ...
  }@inputs: {
   nixosConfigurations.carbon = nixpkgs.lib.nixosSystem {
    system = "x86_64-linux";
    specialArgs = { inherit inputs; };
    modules = [
+    { nixpkgs.overlays = [ nur.overlays.default ]; }
     ./configuration.nix
     ./hardware-configuration.nix
     home-manager.nixosModules.home-manager
