@@ -10,6 +10,10 @@
   hyprland = {
    url = "github:hyprwm/Hyprland";
   };
+  nixvim = {
+   url = "github:nix-community/nixvim";
+   inputs.nixpkgs.follows = "nixpkgs";
+  };
  };
 
  outputs = {
@@ -17,6 +21,7 @@
   nixpkgs,
   home-manager,
   hyprland,
+  nixvim,
   ...
  }@inputs: {
   nixosConfigurations.carbon = nixpkgs.lib.nixosSystem {
@@ -27,10 +32,15 @@
     ./hardware-configuration.nix
     home-manager.nixosModules.home-manager
     { 
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit inputs; };
-      home-manager.users.roger = import ./home.nix;
+     home-manager.useGlobalPkgs = true;
+     home-manager.useUserPackages = true;
+     home-manager.users.roger = import ./home.nix;
+     home-manager.extraSpecialArgs = {
+      inherit inputs;
+     };
+     home-manager.sharedModules = [
+      nixvim.homeModules.nixvim
+     ];
     }
     hyprland.nixosModules.default
    ];

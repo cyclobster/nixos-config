@@ -22,6 +22,22 @@ programs.wofi.enable = true;
   };
  };
  
+ programs.nixvim = {
+  enable = true;
+  defaultEditor = true;
+  colorschemes.tokyonight.enable = true;
+  plugins = {
+   telescope.enable = true;
+   treesitter.enable = true;
+   lsp = {
+    enable = true;
+    servers = {
+     ts_ls.enable = true;
+     nil_ls.enable = true;
+    };
+   };
+  }; 
+ };
  programs.firefox.enable = true;
 
  wayland.windowManager.hyprland = {
