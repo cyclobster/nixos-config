@@ -27,6 +27,7 @@ programs.wofi.enable = true;
   defaultEditor = true;
   colorschemes.tokyonight.enable = true;
   plugins = {
+   web-devicons.enable = true;
    telescope.enable = true;
    treesitter.enable = true;
    lsp = {
@@ -38,7 +39,11 @@ programs.wofi.enable = true;
    };
   }; 
  };
- programs.firefox.enable = true;
+
+ programs.firefox = {
+  enable = true;
+  configPath = "${config.xdg.configHome}/mozilla/firefox";
+ };
 
  wayland.windowManager.hyprland = {
   enable = true;

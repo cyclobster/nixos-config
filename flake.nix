@@ -42,7 +42,6 @@
       nixvim.homeModules.nixvim
      ];
     }
-    hyprland.nixosModules.default
    ];
   };
  };

@@ -87,7 +87,7 @@
      shell = pkgs.zsh;
    };
 
-   programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -99,7 +99,6 @@
      openssh
      gh
      uwsm
-     firefox
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
