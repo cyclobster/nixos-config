@@ -88,6 +88,10 @@ programs.wofi.enable = true;
      "$mod, up, movefocus, u"
      "$mod, down, movefocus, d"
   
+     # Controls
+     ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+     ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+
      "$mod, D, exec, wofi --show drun"
    ];
  

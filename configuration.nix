@@ -82,10 +82,12 @@
    ];
   };
 
+  hardware.acpilight.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.roger = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "vidio" ]; # Enable ‘sudo’ for the user.
      shell = pkgs.zsh;
    };
 
@@ -101,6 +103,8 @@
      openssh
      gh
      uwsm
+     brightnessctl
+     wev
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
