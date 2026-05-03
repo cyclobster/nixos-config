@@ -111,8 +111,6 @@
   # };
 
   # List services that you want to enable:
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

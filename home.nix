@@ -13,6 +13,8 @@
   syntaxHighlighting.enable = true;
  };
 
+programs.wofi.enable = true;
+
  programs.kitty = {
   enable = true;
   settings = {
@@ -42,6 +44,7 @@
     layout = "dwindle";
    };
 
+   
    bind = [
     "$mod, Q, exec, kitty"
     "$mod, C, killactive"
@@ -56,6 +59,8 @@
      "$mod, right, movefocus, r"
      "$mod, up, movefocus, u"
      "$mod, down, movefocus, d"
+  
+     "$mod, D, exec, wofi --show drun"
    ];
  
    env = [
