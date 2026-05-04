@@ -59,8 +59,13 @@
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
+
+   security.rtkit.enable = true;
+
    services.pipewire = {
      enable = true;
+     alsa.enable = true;
+     alsa.support32Bit = true;
      pulse.enable = true;
    };
 
@@ -87,7 +92,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.roger = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "vidio" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" "vidio" "audio" ]; # Enable ‘sudo’ for the user.
      shell = pkgs.zsh;
    };
 
@@ -105,6 +110,8 @@
      uwsm
      brightnessctl
      wev
+     pipewire
+     wireplumber
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
