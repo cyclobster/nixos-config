@@ -11,6 +11,11 @@
   enable = true;
   autosuggestion.enable = true;
   syntaxHighlighting.enable = true;
+  initContent = ''
+    if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+      start-hyprland
+    fi
+  '';
  };
 
 programs.wofi.enable = true;
@@ -19,6 +24,10 @@ programs.wofi.enable = true;
   enable = true;
   settings = {
    shell = "zsh";
+  };
+  font = {
+   name = "monospace";
+   size = 14;
   };
  };
  
