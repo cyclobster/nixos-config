@@ -10,7 +10,10 @@
       ./hardware-configuration.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+   allowUnfree = true;
+   firefox.enableWidevineCDM = true;
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Use the systemd-boot EFI boot loader.
@@ -96,7 +99,12 @@
      shell = pkgs.zsh;
    };
 
-  # programs.firefox.enable = true;
+  programs.firefox = {
+   enable = true;
+   preferences = {
+    "media.eme.enabled" = true;
+   };
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).

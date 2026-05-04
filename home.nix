@@ -52,7 +52,14 @@ programs.wofi.enable = true;
  programs.firefox = {
   enable = true;
   configPath = "${config.xdg.configHome}/mozilla/firefox";
+  package = pkgs.firefox.override {
+   cfg.enableWidevineCDM = true;
+  };
   profiles.roger = {
+   settings = {
+    "media.eme.enabled" = true;
+    "media.gmp-widevinecdm.enabled" = true;
+   };
    extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
     tridactyl
     lastpass-password-manager
