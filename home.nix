@@ -88,7 +88,7 @@ programs.wofi.enable = true;
     layout = "dwindle";
    };
 
-   
+  
    bind = [
     "$mod, Q, exec, kitty"
     "$mod, C, killactive"
@@ -107,8 +107,13 @@ programs.wofi.enable = true;
      # Controls
      ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
      ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+     ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
+     ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+     ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+     ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+     ", XF86WLAN, exec, nmcli radio wifi toggle"
+     ", XF86Favorites, exec, firefox"
 
-     "$mod, D, exec, wofi --show drun"
    ];
  
    env = [
