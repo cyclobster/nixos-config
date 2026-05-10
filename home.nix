@@ -30,7 +30,7 @@
  
    initContent = ''
      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
-       uwsm start hyprland
+       start-hyprland
      fi
    '';
  };
@@ -157,5 +157,6 @@ programs.wofi.enable = true;
 
  home.sessionVariables = {
   SHELL = "${pkgs.zsh}/bin/sh";
+  LESS = "-R --use-color -j5";
  };
 }
