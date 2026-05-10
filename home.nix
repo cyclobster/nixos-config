@@ -7,6 +7,9 @@
 
  home.packages = with pkgs; [
   wl-clipboard
+  bat
+  eza
+  nerd-fonts.fira-code
  ];
  programs.home-manager.enable = true;
 
@@ -21,6 +24,8 @@
      gc = "sudo nix-collect-garbage -d";
      cat = "bat";
      ls = "eza --icons";
+     vim = "nvim";
+     vi = "nvim";
    };
  
    initContent = ''
@@ -36,9 +41,10 @@ programs.wofi.enable = true;
   enable = true;
   settings = {
    shell = "zsh";
+   font_features = "monospace +liga +calt";
   };
   font = {
-   name = "monospace";
+   name = "Firacode Nerd Font Mono";
    size = 14;
   };
  };
