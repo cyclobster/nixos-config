@@ -11,14 +11,23 @@
  programs.home-manager.enable = true;
 
  programs.zsh = {
-  enable = true;
-  autosuggestion.enable = true;
-  syntaxHighlighting.enable = true;
-  initContent = ''
-    if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
-      start-hyprland
-    fi
-  '';
+   enable = true;
+   autosuggestion.enable = true;
+   syntaxHighlighting.enable = true;
+   
+   shellAliases = {
+     ll = "ls -la";
+     update = "sudo nixos-rebuild switch --flake ~/nixos-config#carbon";
+     gc = "sudo nix-collect-garbage -d";
+     cat = "bat";
+     ls = "eza --icons";
+   };
+ 
+   initContent = ''
+     if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+       uwsm start hyprland
+     fi
+   '';
  };
 
 programs.wofi.enable = true;
