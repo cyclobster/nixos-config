@@ -13,6 +13,43 @@
  ];
  programs.home-manager.enable = true;
 
+ programs.waybar = {
+  enable = true;
+  settings = {
+    mainBar = {
+      position = "top";
+      modules-left = [ "hyprland/workspaces" ];
+      modules-center = [ "clock" ];
+      modules-right = [ "battery" "network" "pulseaudio" "backlight" ];
+      
+      clock = {
+        format = "{:%H:%M}";
+        format-alt = "{:%Y-%m-%d}";
+        tooltip-format = "{:%Y-%m-%d %H:%M}";
+      };
+
+      battery = {
+        format = "{capacity}% {icon}";
+        format-icons = ["" "" "" "" ""];
+      };
+
+      network = {
+        interface = "wlp0s20f3";
+        format-wifi = "{essid} ";
+        format-disconnected = "Disconnected ";
+      };
+
+      pulseaudio = {
+        format = "{volume}% ";
+        format-muted = "Muted ";
+      };
+
+      backlight = {
+        format = "{percent}% ";
+      };
+    };
+  };
+};
  programs.zsh = {
    enable = true;
    autosuggestion.enable = true;
@@ -99,6 +136,7 @@ programs.wofi.enable = true;
    "$terminal" = "kitty";
    "$mod" = "MOD4";
 
+   "exec-once" = [ "waybar" ];
    monitor = ",preferred,auto,1";
    
    input = {
@@ -116,6 +154,8 @@ programs.wofi.enable = true;
     "col.inactive_border" = "rgba(595959aa)";
     layout = "dwindle";
    };
+
+   
 
   
    bind = [
