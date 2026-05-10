@@ -38,7 +38,7 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
    console = {
-    font = "ter-v32b";
+    # font = "ter-v32b";
     packages = [ pkgs.terminus_font ];
   #   font = "Lat2-Terminus16";
      keyMap = "us";

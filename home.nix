@@ -5,6 +5,10 @@
  home.homeDirectory = "/home/roger";
  home.stateVersion = "25.11";
 
+ home.packages = with pkgs; [
+  xclip
+  xsel
+ ];
  programs.home-manager.enable = true;
 
  programs.zsh = {
@@ -79,6 +83,13 @@ programs.wofi.enable = true;
 
    monitor = ",preferred,auto,1";
    
+   input = {
+    kb_layout = "us";
+    kb_options = "caps:ctrl_modifier";
+    touchpad = {
+     natural_scroll = true;
+    };
+   };
    general = {
     gaps_in = 5;
     gaps_out = 20;
