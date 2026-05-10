@@ -6,8 +6,7 @@
  home.stateVersion = "25.11";
 
  home.packages = with pkgs; [
-  xclip
-  xsel
+  wl-clipboard
  ];
  programs.home-manager.enable = true;
 
@@ -39,6 +38,10 @@ programs.wofi.enable = true;
   enable = true;
   defaultEditor = true;
   colorschemes.tokyonight.enable = true;
+  clipboard = {
+   register = "unnamedplus";
+   providers.wl-copy.enable = true;
+  };
   plugins = {
    web-devicons.enable = true;
    telescope.enable = true;
