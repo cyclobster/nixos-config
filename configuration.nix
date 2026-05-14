@@ -47,6 +47,15 @@
 
   services.xserver.videoDrivers = [ "modesetting" ];
   services.thermald.enable = true;
+  services.tlp = {
+   enable = true;
+   settings = {
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    START_CHARGE_THRESH_BAT0 = 20;
+    STOP_CHARGE_THRESH_BAT0 = 80;
+   };
+  };
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
