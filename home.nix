@@ -6,11 +6,35 @@
  home.stateVersion = "25.11";
 
  home.packages = with pkgs; [
+  hyprpaper
   wl-clipboard
   bat
   eza
   nerd-fonts.fira-code
  ];
+
+  # Enable the service
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      
+      # Preload images into memory
+      preload = [
+        "/home/roger/resources/wallpaper.jpg"
+      ];
+
+      # Assign wallpapers to monitors
+      wallpaper = [
+       {
+        monitor = "eDP-1";
+	path = "/home/roger/resources/wallpaper.jpg";
+       }
+      ];
+    };
+  };
+
  programs.home-manager.enable = true;
 
  programs.waybar = {
@@ -142,7 +166,7 @@ programs.wofi.enable = true;
    "$terminal" = "kitty";
    "$mod" = "MOD4";
 
-   "exec-once" = [ "waybar" ];
+   "exec-once" = [ "waybar" "hyprpaper" ];
    monitor = ",preferred,auto,1";
    
    input = {
