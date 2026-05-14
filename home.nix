@@ -20,8 +20,13 @@
       position = "top";
       modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "clock" ];
-      modules-right = [ "battery" "network" "pulseaudio" "backlight" ];
-      
+     modules-right = [ "temperature" "battery" "network" "pulseaudio" "backlight" "clock" ];
+
+      temperature = {
+       critical-threshold = 80;
+       format = "{temperatureC}°C {icon}";
+       format-icons = ["" "" ""];
+      }; 
       clock = {
         format = "{:%H:%M}";
         format-alt = "{:%Y-%m-%d}";

@@ -46,6 +46,7 @@
    };
 
   services.xserver.videoDrivers = [ "modesetting" ];
+  services.thermald.enable = true;
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
@@ -120,6 +121,7 @@
      wev
      pipewire
      wireplumber
+     lm_sensors
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
