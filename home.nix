@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
  home.username = "roger";
@@ -107,6 +107,7 @@ programs.wofi.enable = true;
  programs.kitty = {
   enable = true;
   settings = {
+   background_opacity = 0.5;
    shell = "zsh";
    font_features = "monospace +liga +calt";
   };
@@ -124,6 +125,23 @@ programs.wofi.enable = true;
    register = "unnamedplus";
    providers.wl-copy.enable = true;
   };
+
+  highlightOverride = { 
+   Normal = { bg = "none"; ctermbg = "none"; };
+   NormalFloat = { bg = "none"; ctermbg = "none"; };
+   FloatBorder = { bg = "none"; ctermbg = "none"; };
+   Pmenu = { bg = "none"; ctermbg = "none"; };
+  };
+
+  extraConfigLua = ''
+    vim.diagnostic.config({
+      virtual_text = true, -- Shows warning text right next to the code
+      signs = true,
+      underline = true,
+    })
+  '';
+
+
   plugins = {
    web-devicons.enable = true;
    telescope.enable = true;
@@ -179,8 +197,8 @@ programs.wofi.enable = true;
    general = {
     gaps_in = 5;
     gaps_out = 20;
-    border_size = 2;
-    "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+    border_size = 1;
+    "col.active_border" = "rgba(33333333) rgba(00ff99ee) 45deg";
     "col.inactive_border" = "rgba(595959aa)";
     layout = "dwindle";
    };
