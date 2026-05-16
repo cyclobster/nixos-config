@@ -159,6 +159,11 @@ programs.wofi.enable = true;
 
  programs.firefox = {
   enable = true;
+   policies = {
+     OfferToSaveLogins = false;
+     PasswordManagerEnabled = false;
+   };
+
   configPath = "${config.xdg.configHome}/mozilla/firefox";
   package = pkgs.firefox.override {
    cfg.enableWidevineCDM = true;
