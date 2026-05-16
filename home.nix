@@ -48,6 +48,7 @@
 
       temperature = {
        critical-threshold = 80;
+       hwmon-path = "/sys/class/thermal/thermal_zone5/temp";
        format = "{temperatureC}°C {icon}";
        format-icons = ["" "" ""];
       }; 
