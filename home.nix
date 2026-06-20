@@ -223,6 +223,7 @@ programs.wofi.enable = true;
     "$mod, V, exec, togglefloating"
     "$mod, R, exec, wofi -- show drun"
     "$mod, F, exec, firefox"
+    "$mod, 3, exec, openscad"
 
      # move focus with mod + arrow keys
      "$mod, left, movefocus, l"
