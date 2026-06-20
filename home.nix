@@ -6,9 +6,12 @@
  home.stateVersion = "25.11";
 
  home.packages = with pkgs; [
+  openscad
   hyprpaper
   wl-clipboard
+  btop
   bat
+  musescore
   eza
   nerd-fonts.fira-code
  ];
