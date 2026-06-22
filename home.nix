@@ -194,8 +194,11 @@ programs.wofi.enable = true;
    "$mod" = "MOD4";
 
    "exec-once" = [ "waybar" "hyprpaper" ];
-   monitor = ",preferred,auto,1";
-   
+   monitor = [
+     "eDP-1, 1920x1080@60, 0x0, 1"
+     ", preferred, auto, 1"
+   ];
+
    input = {
     kb_layout = "us";
     kb_options = "caps:ctrl_modifier";
@@ -249,6 +252,8 @@ programs.wofi.enable = true;
     "XDG_SESSION_TYPE,wayland"
     "XDG_SESSION_DESKTOP,Hyprland"
     "QT_QPA_PLATFORM,wayland"
+    "WLR_NO_HARDWARE_CURSORS,1"
+    "WLR_RENDERER_ALLOW_SOFTWARE,1"
    ];
   };
  };
