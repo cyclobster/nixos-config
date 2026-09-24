@@ -38,6 +38,27 @@
     };
   };
 
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+	command = "${pkgs.swaylock}/bin/swaylock -f -c 000000"; }
+    ];
+    timeouts = [
+      {
+        timeout = 600;
+	command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+      }
+
+      {
+        timeout = 605;
+        command = "systemctl suspend";
+      }
+    ];
+  };
+
+
  programs.home-manager.enable = true;
 
  programs.direnv = {
